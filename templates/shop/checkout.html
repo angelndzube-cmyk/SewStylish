@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+<div class="col-md-6 bg-white p-4 rounded shadow-sm">
+<h3>Checkout</h3>
+<form method="post">{% csrf_token %}
+<div class="mb-3"><label>Phone (WhatsApp)</label><input name="phone" class="form-control" required placeholder="081..."></div>
+<div class="mb-3"><label>Delivery Address / Collect</label><textarea name="address" class="form-control" required>Collect in store - Cape Town</textarea></div>
+<p>Payment will be Pay on Delivery / EFT for portfolio. Order status will update to Paid.</p>
+<button class="btn btn-primary w-100 btn-lg">Place Order (Mock Payment)</button>
+</form>
+</div>
+</div>
+{% endblock %}

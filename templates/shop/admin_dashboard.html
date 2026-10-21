@@ -1,0 +1,19 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<h3>Admin Dashboard - All Orders</h3>
+<table class="table bg-white shadow-sm">
+<tr><th>ID</th><th>User</th><th>Total</th><th>Phone</th><th>Status</th><th>Date</th><th>Action</th></tr>
+{% for o in orders %}
+<tr>
+<td>{{ o.id }}</td><td>{{ o.user.username }}</td><td>R{{ o.total }}</td><td>{{ o.phone }}</td>
+<td>{{ o.status }}</td><td>{{ o.created_at|date:"Y-m-d" }}</td>
+<td>
+<form method="post" action="/update-status/{{ o.id }}/" class="d-flex">{% csrf_token %}
+<select name="status" class="form-select form-select-sm"><option>Pending</option><option>Paid</option><option>Sewing</option><option>Ready</option><option>Delivered</option></select>
+<button class="btn btn-sm btn-primary ms-1">Update</button>
+</form>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

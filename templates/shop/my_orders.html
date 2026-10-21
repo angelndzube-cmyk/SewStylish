@@ -1,0 +1,13 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<h3>My Orders</h3>
+{% for order in orders %}
+<div class="card mb-3">
+<div class="card-body">
+<h5>Order #{{ order.id }} - R{{ order.total }} - <span class="badge bg-info">{{ order.status }}</span></h5>
+<p class="small text-muted">{{ order.created_at }} | {{ order.phone }} | {{ order.address }}</p>
+<ul>{% for item in order.items.all %}<li>{{ item.product.title }} x {{ item.quantity }} = R{{ item.price }}</li>{% endfor %}</ul>
+</div>
+</div>
+{% empty %}<p>No orders yet.</p>{% endfor %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="text-center mb-4 p-4 bg-white rounded shadow-sm">
+<h1>Welcome to SewStylish ✨</h1>
+<p>Custom-made dresses, alterations & fashion design in Cape Town</p>
+</div>
+<div class="mb-3">
+{% for cat in categories %}
+<a href="/?category={{ cat.id }}" class="btn btn-outline-primary btn-sm me-1">{{ cat.name }}</a>
+{% endfor %}
+<a href="/" class="btn btn-secondary btn-sm">All</a>
+</div>
+<div class="row">
+{% for p in products %}
+<div class="col-md-4 mb-4">
+<div class="card h-100">
+{% if p.image %}<img src="{{ p.image.url }}" class="card-img-top" style="height:300px; object-fit:cover">{% endif %}
+<div class="card-body">
+<h5>{{ p.title }}</h5>
+<p class="text-muted small">{{ p.category.name }} | Size: {{ p.size }} | Stock: {{ p.stock }}</p>
+<p>{{ p.description|truncatewords:15 }}</p>
+<h6 class="text-primary fw-bold">R{{ p.price }}</h6>
+<a href="/product/{{ p.id }}/" class="btn btn-primary w-100">View Details</a>
+</div>
+</div>
+</div>
+{% empty %}
+<p>No products yet. Add in /admin/</p>
+{% endfor %}
+</div>
+{% endblock %}
