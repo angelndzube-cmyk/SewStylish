@@ -1,12 +1,36 @@
-# SewStylish - Custom Fashion E-commerce Platform
-Cape Town, South Africa - Final Year Project by Sisipho Angel Ndzube
+# SewStylish 👗 - Custom Fashion E-commerce Platform
+Custom-made dresses, alterations and fashion design - Cape Town, South Africa
 
-## Live Demo Evidence
-This terminal log shows all routes working with 200 OK:
-- Home, Category filter, Product detail, Cart, My Orders, Admin Dashboard
-- Media file IMG_7671.jpeg served correctly
+## Overview
+SewStylish is a Django-based e-commerce platform for a local fashion boutique.
+Customers can browse collections, add to cart, checkout with delivery details and track orders.
+Business owner manages products and orders via admin dashboard.
 
-## How to Run
+## Live Demo
+Server runs at http://127.0.0.1:8000/ - All routes tested 200 OK
+- Home with category filter & search
+- Product detail
+- Session-based cart
+- Checkout (mock payment)
+- My Orders tracking
+- Admin Dashboard for order status updates
+
+## Features
+- Browse, Search, Filter by Category (Dresses, Alterations, Custom Design)
+- Product Detail with Size / Stock / Image (Pillow)
+- Cart with quantity & total calculation
+- Checkout with phone + address
+- Order status flow: Pending -> Paid -> Sewing -> Ready -> Delivered
+- Authentication: Signup, Login, Logout
+- Admin: Django Admin + Custom Admin Dashboard
+
+## Tech Stack
+Python 3.12, Django 5, Bootstrap 5, SQLite, Django Auth, Pillow
+
+## Models
+Category, Product, Order, OrderItem, User (built-in)
+
+## How to Run Locally
 pip install django pillow
 python manage.py makemigrations
 python manage.py migrate
@@ -15,15 +39,8 @@ python manage.py runserver
 
 Open http://127.0.0.1:8000/
 
-## Test Flow for Video
-1. / -> Home with products
-2. /?category=3 -> Filter
-3. /product/1/ -> Detail + Add to Cart
-4. /cart/ -> View cart
-5. /checkout/ -> Place order (mock payment)
-6. /my-orders/ -> Track status
-7. /admin-dashboard/ -> Admin updates to Sewing/Ready/Delivered
-
-## Tech
-Django 5, Bootstrap 5, SQLite, Session Cart, Auth
-Models: Category, Product, Order, OrderItem
+## Project Structure
+sewstylish_project/settings.py - media config & context processor
+shop/models.py - 4 models
+shop/views.py - 10 views
+templates/shop/ - 6 templates
